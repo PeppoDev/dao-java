@@ -1,8 +1,9 @@
 package br.ufal.aracomp.jdbc.dao;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
 
 import br.ufal.aracomp.jdbc.dataSource.IDataSource;
 import br.ufal.aracomp.jdbc.model.Locacao;
@@ -29,7 +30,7 @@ public class DAOLocacao implements IDAOLocacao{
 
     @Override
     public Locacao consultar(int codigo, String login, Date data_locacao) {
-        String sql = "SELECT nome FROM Locacao WHERE login_clienteFK = '" + login + "' and WHERE codigo_unidadeFK ='"+codigo+"'and WHERE data_locacao ='"
+        String sql = "SELECT data_locacao, data_devolucao FROM Locacao WHERE login_clienteFK = '" + login + "' and WHERE codigo_unidadeFK ='"+codigo+"'and WHERE data_locacao ='"
                 + data_locacao + "";
         try {
             ResultSet rs = this.dataSource.executarSelect(sql);
@@ -67,5 +68,23 @@ public class DAOLocacao implements IDAOLocacao{
         else {
             System.err.println("ERRO NA ALTERACAO! ESSA LOCACAO JÁ EXISTE");
         }
+    }
+
+    @Override
+    public List<Locacao> consultarPorCliente(String login) {
+        String sql = String.format("SELECT * where login_clienteFK = '%s' ", login);
+        ArrayList<Locacao> locacoes =  new ArrayList<Locacao>();
+
+        try {
+            ResultSet rs = this.dataSource.executarSelect(sql);
+
+            if (rs.next()) {
+                Locacao  locacao =  new Locacao(rs.getDate("data_locacao"), rs.getDate("data_devolucao"));
+                locacoes.add(locacao);
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+        return locacoes;
     }
 }

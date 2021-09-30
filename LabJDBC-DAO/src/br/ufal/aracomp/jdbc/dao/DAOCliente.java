@@ -109,15 +109,7 @@ public class DAOCliente implements IDAOCliente {
 	
 	@Override
 	public List<Locacao> obterLocacoesCliente(Cliente cliente){
-		//TODO implementar este metodo:
-		//Consultar os ids das unidades locadas pelo cliente e os demais atributos do relacionamento "locar"
-		//Para cada unidade, obter a unidade (utilizando o DAO de Unidade) 
-		//Instanciar o objeto Locacao, passando o cliente, a unidade e os valores dos demais atributos 
-		//Adicionar a locacao na lista
-		//retornar a lista de Locacoes. Pode ser uma lista vazia, caso o cliente nao tenha locado nada.
-		
-		
-
-		return null;
+			DAOLocacao daoLocacao = new DAOLocacao(dataSource);
+			return daoLocacao.consultarPorCliente(cliente.getLogin());
 	}
 }
