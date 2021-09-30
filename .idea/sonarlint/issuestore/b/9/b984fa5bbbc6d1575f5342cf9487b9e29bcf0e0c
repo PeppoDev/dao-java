@@ -1,0 +1,16 @@
+
+A
+java:S1172"+Remove this unused method parameter "args".(€’Ü¦
+Z
+java:S2147)"DCombine this catch with the one at line 39, which has the same body.(É®£
+?
+java:S2115")Add password protection to this database.(ë˜Ş
+S	java:S106""9Replace this use of System.out or System.err by a logger.(»ş’şüÿÿÿÿ
+S	java:S106$"9Replace this use of System.out or System.err by a logger.(Àöäñıÿÿÿÿ
+N
+java:S1854B"8Remove this useless assignment to local variable "phsb".(©¤‹÷
+?
+java:S1481B")Remove this unused "phsb" local variable.(©¤‹÷
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(«”á®
+^
+java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(ë˜Ş
